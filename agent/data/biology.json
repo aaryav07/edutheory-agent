@@ -1,15 +1,17 @@
-
 {
-  "subject": "Biology",
-  "chapters": {
-    "1": {
-      "title": "Human Reproduction",
-      "theory": "Human reproduction involves the formation of gametes, fertilization, and development of the embryo."
+  "Subject": "Biology",
+  "topics": [
+    {
+      "Title": "Cell Biology",
+      "Theory": "Structure and function of cells, organelles, and cell division."
     },
-    "2": {
-      "title": "Genetics",
-      "theory": "Genetics is the study of heredity and variation. Mendel's laws describe patterns of inheritance."
+    {
+      "Title": "Genetics",
+      "Theory": "Inheritance, DNA, genes, and Mendelian laws."
+    },
+    {
+      "Title": "Human Physiology",
+      "Theory": "Study of human body systems like circulatory, respiratory, and nervous."
     }
-  }
+  ]
 }
-
