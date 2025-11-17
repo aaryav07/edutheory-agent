@@ -1,36 +1,49 @@
-import json
 import os
+import json
 
-DATA_FOLDER = "data"
+DATA_FOLDER = os.path.join(os.path.dirname(__file__), "data")
 
 def load_subjects():
     subjects = {}
-    for file in os.listdir(DATA_FOLDER):
-        if file.endswith(".json"):
-            with open(os.path.join(DATA_FOLDER, file), "r") as f:
+    for filename in os.listdir(DATA_FOLDER):
+        if filename.endswith(".json") and filename != "subjects.json":
+            filepath = os.path.join(DATA_FOLDER, filename)
+            with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                subjects[data["class"]] = data["topics"]
+                subject_name = data.get("Subject", "Unknown")
+                topics = data.get("topics", [])
+                subjects[subject_name] = topics
     return subjects
-
 
 def run_agent():
     print("📚 Welcome to the 12th Standard Study Helper AI!")
     print("-----------------------------------------------")
-
+    
     subjects = load_subjects()
-    print("\nAvailable Subjects:")
-    for idx, subj in enumerate(subjects.keys(), start=1):
-        print(f"{idx}. {subj}")
+    if not subjects:
+        print("No subjects found in the data folder!")
+        return
 
-    choice = int(input("\nEnter subject number: "))
-    selected_subject = list(subjects.keys())[choice - 1]
+    while True:
+        print("\nAvailable subjects:")
+        for sub in subjects:
+            print(f" - {sub}")
+        print("Type 'exit' to quit.")
 
-    print(f"\n📘 Topics in {selected_subject}:")
-    for topic in subjects[selected_subject]:
-        print(f"- {topic}")
+        choice = input("\nEnter the subject you want to study: ").strip()
+        if choice.lower() == "exit":
+            print("Goodbye! Happy studying! 📖")
+            break
 
-    print("\n✨ Thanks for using the Study Helper!")
+        if choice not in subjects:
+            print("Subject not found. Please type exactly as shown above.")
+            continue
 
+        print(f"\nTopics in {choice}:")
+        for topic in subjects[choice]:
+            title = topic.get("Title", "No Title")
+            theory = topic.get("Theory", "No Theory")
+            print(f" - {title}: {theory}")
 
 if __name__ == "__main__":
     run_agent()
