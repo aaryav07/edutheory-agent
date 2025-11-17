@@ -1,15 +1,17 @@
-
 {
-  "subject": "Mathematics",
-  "chapters": {
-    "1": {
-      "title": "Relations and Functions",
-      "theory": "A relation is a set of ordered pairs. A function is a relation in which every input has exactly one output."
+  "Subject": "Math",
+  "topics": [
+    {
+      "Title": "Calculus",
+      "Theory": "Differentiation, integration, and applications in real life."
     },
-    "2": {
-      "title": "Differentiation",
-      "theory": "Differentiation is the rate of change of a function with respect to its variable. It measures how a function changes as the input changes."
+    {
+      "Title": "Probability",
+      "Theory": "Basic probability, combinatorics, and random variables."
+    },
+    {
+      "Title": "Algebra",
+      "Theory": "Equations, inequalities, matrices, and determinants."
     }
-  }
+  ]
 }
-
