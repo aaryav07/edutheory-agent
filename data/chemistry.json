@@ -1,0 +1,13 @@
+{
+  "subject": "Chemistry",
+  "chapters": {
+    "1": {
+      "title": "Solid State",
+      "theory": "Solid state chemistry deals with the structure, properties, and types of solids including crystalline and amorphous solids."
+    },
+    "2": {
+      "title": "Solutions",
+      "theory": "A solution is a homogeneous mixture of two or more substances. Important terms include solute, solvent, concentration, and molarity."
+    }
+  }
+}
