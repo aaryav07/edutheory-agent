@@ -1,34 +1,36 @@
 import json
 import os
 
-def load_subject_data(subject):
-    """Loads the JSON file for the selected subject."""
-    file_path = f"data/{subject.lower()}.json"
+DATA_FOLDER = "data"
 
-    if not os.path.exists(file_path):
-        return {"error": "Subject not found."}
-
-    with open(file_path, "r") as f:
-        return json.load(f)
-
-
-def get_chapter_theory(subject, chapter_number):
-    """Returns the theory for the selected subject & chapter."""
-    data = load_subject_data(subject)
-
-    if "error" in data:
-        return data["error"]
-
-    chapters = data.get("chapters", {})
-
-    if str(chapter_number) not in chapters:
-        return "Chapter not found."
-
-    chapter = chapters[str(chapter_number)]
-    
-    return f"📘 {chapter['title']}\n\n{chapter['theory']}"
+def load_subjects():
+    subjects = {}
+    for file in os.listdir(DATA_FOLDER):
+        if file.endswith(".json"):
+            with open(os.path.join(DATA_FOLDER, file), "r") as f:
+                data = json.load(f)
+                subjects[data["class"]] = data["topics"]
+    return subjects
 
 
-# Example usage (for future testing)
+def run_agent():
+    print("📚 Welcome to the 12th Standard Study Helper AI!")
+    print("-----------------------------------------------")
+
+    subjects = load_subjects()
+    print("\nAvailable Subjects:")
+    for idx, subj in enumerate(subjects.keys(), start=1):
+        print(f"{idx}. {subj}")
+
+    choice = int(input("\nEnter subject number: "))
+    selected_subject = list(subjects.keys())[choice - 1]
+
+    print(f"\n📘 Topics in {selected_subject}:")
+    for topic in subjects[selected_subject]:
+        print(f"- {topic}")
+
+    print("\n✨ Thanks for using the Study Helper!")
+
+
 if __name__ == "__main__":
-    print(get_chapter_theory("physics", 1))
+    run_agent()
