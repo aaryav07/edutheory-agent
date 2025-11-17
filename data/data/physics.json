@@ -1,0 +1,13 @@
+{
+  "subject": "Physics",
+  "chapters": {
+    "1": {
+      "title": "Rotational Motion",
+      "theory": "Rotational motion is the motion of a body around a fixed axis. Important quantities include moment of inertia, torque, angular momentum, and angular velocity."
+    },
+    "2": {
+      "title": "Gravitation",
+      "theory": "Gravitation is the force of attraction between any two masses. Newton's law of gravitation describes this force and its mathematical relation."
+    }
+  }
+}
